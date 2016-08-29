@@ -1,6 +1,5 @@
 package net.intelie.omnicron;
 
-import com.sun.xml.internal.ws.client.sei.ValueSetterFactory;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
