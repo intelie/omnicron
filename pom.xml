@@ -6,11 +6,11 @@
 
     <groupId>net.intelie.kron</groupId>
     <artifactId>omnicron</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 
     <name>Omnicron</name>
     <description>Simple, fast, zero-dependency Cron expression evaluator for Java 8</description>
-    <url>https://intelie.github.io/omnicron</url>
+    <url>http://www.intelie.com/omnicron/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
