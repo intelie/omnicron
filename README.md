@@ -9,12 +9,23 @@ Simple, fast, zero-dependency Cron expression evaluator for Java 8.
 * `0 0 * * *` won't match DST gap
 * `0 23 * * *` will match DST overlap twice
 
-This means, actually that a cron expression will only match exactly what its
+In other words, a cron expression will only match exactly what its
 values explicitly say.
 
 ## Usage
 
-*Soon: Maven dependency declaration.*
+Omnicron is available through Maven Central repository, just add the following
+dependency to your `pom.xml` file:
+
+```xml
+<dependency>
+    <groupId>net.intelie.omnicron</groupId>
+    <artifactId>omnicron</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
+Then, you can use it like that:
 
 ```java
 Cron cron = new Cron("*/5 * * * *");
