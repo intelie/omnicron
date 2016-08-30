@@ -6,12 +6,34 @@
 
     <groupId>net.intelie.omnicron</groupId>
     <artifactId>omnicron</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>jar</packaging>
 
     <name>Omnicron</name>
     <description>Simple, fast, zero-dependency Cron expression evaluator for Java 8</description>
     <url>http://www.intelie.com/omnicron/</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Juan Lopes</name>
+            <email>juan.lopes@intelie.com.br</email>
+            <organization>Intelie</organization>
+            <organizationUrl>http://www.intelie.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/intelie/omnicron.git</connection>
+        <developerConnection>scm:git:ssh://github.com:intelie/omnicron.git</developerConnection>
+        <url>http://github.com/intelie/omnicron/tree/master</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
