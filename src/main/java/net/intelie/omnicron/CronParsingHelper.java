@@ -17,6 +17,14 @@ class CronParsingHelper {
     }
 
     public static List<Field> parse(String expr) {
+        expr = alias(expr, "@yearly", "0 0 1 1 *");
+        expr = alias(expr, "@annually", "0 0 1 1 *");
+        expr = alias(expr, "@monthly", "0 0 1 * *");
+        expr = alias(expr, "@weekly", "0 0 * * 0");
+        expr = alias(expr, "@daily", "0 0 * * *");
+        expr = alias(expr, "@midnight", "0 0 * * *");
+        expr = alias(expr, "@hourly", "0 * * * *");
+
         String[] fields = expr.split("\\s+");
         CronException.check(fields.length == 5 || fields.length == 6,
                 "Expression '%s' must define 5 or 6 fields. It has: %d.", expr, fields.length);
@@ -29,6 +37,12 @@ class CronParsingHelper {
                 parseOther(FieldType.DAY, fields[offset + 2]),
                 parseMonth(fields[offset + 3]),
                 parseDayOfWeek(fields[offset + 4]));
+    }
+
+    private static String alias(String expression, String from, String to) {
+        if (from.equalsIgnoreCase(expression))
+            return to;
+        return expression;
     }
 
     public static Field parseDayOfWeek(String field) {

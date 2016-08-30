@@ -9,7 +9,6 @@ public class CronException extends RuntimeException {
         super(String.format(message, objs));
     }
 
-
     public static void check(boolean condition, Object errorMessage) {
         if (!condition)
             throw new CronException(errorMessage);

@@ -2,6 +2,7 @@ package net.intelie.omnicron;
 
 import org.junit.Test;
 
+import java.time.Instant;
 import java.time.ZonedDateTime;
 
 import static org.junit.Assert.assertEquals;
@@ -18,6 +19,33 @@ public class CronTest {
     }
 
     @Test
+    public void testAliases() throws Exception {
+        assertAlias("@yearly", "0 0 1 1 *");
+        assertAlias("@annually", "0 0 1 1 *");
+        assertAlias("@monthly", "0 0 1 * *");
+        assertAlias("@weekly", "0 0 * * 0");
+        assertAlias("@daily", "0 0 * * *");
+        assertAlias("@midnight", "0 0 * * *");
+        assertAlias("@hourly", "0 * * * *");
+    }
+
+    private void assertAlias(String alias, String cron) {
+        Cron cronAlias = new Cron(alias);
+        Cron cronCron = new Cron(cron);
+        ZonedDateTime date1 = Support.brt("2016-10-15 13:14:00");
+        ZonedDateTime date2 = Support.brt("2016-10-15 13:14:00");
+
+        for (int i = 0; i < 1000; i++) {
+            date1 = cronAlias.next(date1);
+            date2 = cronCron.next(date2);
+
+            assertEquals(true, cronAlias.matches(date2));
+            assertEquals(true, cronCron.matches(date1));
+            assertEquals(date2, date1);
+        }
+    }
+
+    @Test
     public void testNulldate() throws Exception {
         Cron cron = new Cron("* * * 30 2 *");
         assertEquals(null, cron.next(null));
@@ -31,7 +59,7 @@ public class CronTest {
         ZonedDateTime date = Support.brt("2016-10-15 13:14:00");
         long start = date.toInstant().toEpochMilli();
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             date = cron.next(date);
             start += 60000;
 
@@ -46,7 +74,7 @@ public class CronTest {
         ZonedDateTime date = Support.brt("2016-02-20 13:14:00");
         long start = date.toInstant().toEpochMilli();
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             date = cron.next(date);
             start += 60000;
 

@@ -30,7 +30,7 @@ public class ValueField implements Field {
         int current = field.get(date);
         if (current == value) return date;
 
-        while (current != value) {
+        while (!(current == value)) {
             date = tryNext(date, value, current);
             current = field.get(date);
         }
@@ -44,7 +44,7 @@ public class ValueField implements Field {
         int current = field.get(date);
         if (current == value) return date;
 
-        while (current != value) {
+        while (!(current == value)) {
             date = tryPrevious(date, value, current);
             current = field.get(date);
         }
