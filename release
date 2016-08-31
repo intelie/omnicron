@@ -3,13 +3,13 @@
 set -e
 
 if [ $# -lt 2 ]; then
-    echo 'deploy <version> <next-version>'
-    echo 'deploy 0.1 0.2'
+    echo "$0 <version> <next-version>"
+    echo "$0 0.1 0.2"
     exit 0
 fi
 
 mvn versions:set -DnewVersion=$1
-mvn deploy
+mvn clean deploy
 
 #prune old tags
 git fetch origin --prune +refs/tags/*:refs/tags/*
